@@ -32,7 +32,7 @@
             position: relative;
         }
 
-        /* Abstract circle decorations */
+        /* Background shapes */
         .circle-decor-1 {
             position: fixed;
             top: -30px;
@@ -55,7 +55,7 @@
             z-index: 0;
         }
 
-        /* Main Content Grid */
+        /* Layout Grid */
         .grid-layout {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -118,12 +118,11 @@
             font-weight: 400;
         }
 
-        /* CTA Button */
+        /* Black CTA Button */
         .shop-now-btn {
             display: inline-block;
             background-color: #000000;
             color: #ffffff;
-            text-decoration: none;
             padding: 12px 30px;
             font-weight: 700;
             border-radius: 25px;
@@ -134,6 +133,7 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.3);
             cursor: pointer;
             border: none;
+            width: 100%;
         }
 
         .shop-now-btn:hover {
@@ -141,7 +141,7 @@
             transform: translateY(-2px);
         }
 
-        /* Bottom Banner Section */
+        /* Footer Banner */
         .footer-banner {
             background-color: #e26356;
             padding: 25px;
@@ -179,7 +179,7 @@
             text-decoration: underline;
         }
 
-        /* POP-UP MODAL STYLES */
+        /* POP-UP MODAL WINDOW */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -194,10 +194,11 @@
             z-index: 10;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.2s ease;
         }
 
-        .modal-overlay.active {
+        /* Active class rules when opened via JS */
+        .modal-overlay.open-modal {
             opacity: 1;
             pointer-events: auto;
         }
@@ -213,10 +214,10 @@
             text-align: center;
             position: relative;
             transform: scale(0.8);
-            transition: transform 0.3s ease;
+            transition: transform 0.2s ease;
         }
 
-        .modal-overlay.active .modal-content {
+        .modal-overlay.open-modal .modal-content {
             transform: scale(1);
         }
 
@@ -313,8 +314,7 @@
                 <p class="pitch-text">
                     Professional grade essentials designed to help you maintain your well-being. Trusted by professionals everywhere.
                 </p>
-                <!-- Changed from <a> tag to a clickable button -->
-                <button class="shop-now-btn" id="shopBtn">Shop Now</button>
+                <button class="shop-now-btn" id="shopNowBtn">Shop Now</button>
             </div>
         </div>
 
@@ -326,10 +326,10 @@
         </div>
     </div>
 
-    <!-- POP-UP MODAL BOX -->
-    <div class="modal-overlay" id="orderModal">
+    <!-- POP-UP MODAL WINDOW MARKUP -->
+    <div class="modal-overlay" id="checkoutModal">
         <div class="modal-content">
-            <button class="close-btn" id="closeBtn">&times;</button>
+            <button class="close-btn" id="closeModalBtn">&times;</button>
             <h3>Secure Checkout</h3>
             
             <div class="order-summary">
@@ -339,13 +339,12 @@
 
             <form id="checkoutForm">
                 <div class="form-group">
-                    <label for="sponsorName">Sponsor Name</label>
-                    <input type="text" id="sponsorName" placeholder="Your Name" required>
+                    <label for="buyerName">Buyer Name</label>
+                    <input type="text" id="buyerName" placeholder="Your Full Name" required>
                 </div>
                 <div class="form-group">
-                    <label for="districtSelect">Deliver to District</label>
+                    <label for="districtSelect">Deliver to Region</label>
                     <select id="districtSelect">
-                        <option>District 1 (Luxury)</option>
-                        <option>District 2 (Masonry)</option>
-
-                        
+                        <option>District 1</option>
+                        <option>District 2</option>
+                        <option>District 4</option>
