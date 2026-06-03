@@ -161,7 +161,8 @@
                 <strong>SPONSOR TAX:</strong> $120.00
             </div>
 
-            <form action="index.html" onsubmit="alert('TRANSMISSION SUCCESSFUL! Your sponsor parcel has been authorized. Deploying silver parachute cargo immediately.')">
+            <!-- Changed action link destination to point back to the home root directory safely -->
+            <form action="./" onsubmit="alert('TRANSMISSION SUCCESSFUL! Your sponsor parcel has been authorized. Deploying silver parachute cargo immediately.')">
                 <div class="form-group">
                     <label>Sponsor Identity</label>
                     <input type="text" placeholder="Enter Sponsor Name" required>
@@ -177,7 +178,8 @@
                     </select>
                 </div>
                 <button type="submit" class="submit-order-btn">Deploy Parachute</button>
-                <a href="index.html" class="back-link">← ABORT_DEPLOYMENT</a>
+                <!-- Fixed navigation tracking line -->
+                <a href="./" class="back-link">— ABORT_DEPLOYMENT</a>
             </form>
         </div>
 
