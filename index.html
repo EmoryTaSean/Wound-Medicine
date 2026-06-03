@@ -14,7 +14,6 @@
         body {
             margin: 0;
             padding: 0;
-            /* Deep, dark cinematic gradient */
             background: radial-gradient(circle at center, #2b0b08 0%, #110302 100%);
             font-family: 'Montserrat', sans-serif;
             display: flex;
@@ -47,7 +46,6 @@
             z-index: 1;
         }
 
-        /* Abstract glowing vector lines */
         .scifi-line {
             position: absolute;
             background: linear-gradient(90deg, transparent, #df4a3b, transparent);
@@ -59,7 +57,6 @@
             box-shadow: 0 0 10px #df4a3b;
         }
 
-        /* Main Content Grid with Glowing Matte Panel styling */
         .grid-layout {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -72,7 +69,6 @@
             display: none !important;
         }
 
-        /* Left Column Design */
         .left-column {
             background: linear-gradient(135deg, rgba(223, 74, 59, 0.15) 0%, rgba(184, 50, 39, 0.05) 100%);
             border: 1px solid rgba(223, 74, 59, 0.3);
@@ -135,7 +131,6 @@
             animation: pulseGlow 3s infinite ease-in-out;
         }
 
-        /* Right Column Design */
         .right-column {
             background: linear-gradient(135deg, rgba(30, 30, 30, 0.8) 0%, rgba(15, 15, 15, 0.9) 100%);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -163,7 +158,6 @@
             font-weight: bold;
         }
 
-        /* Tech Details List */
         .tech-spec-list {
             list-style: none;
             padding: 0;
@@ -184,7 +178,6 @@
             float: right;
         }
 
-        /* Animated CTA Button */
         .shop-now-btn {
             background: linear-gradient(90deg, #df4a3b, #b83227);
             color: #ffffff;
@@ -208,7 +201,6 @@
             filter: brightness(1.2);
         }
 
-        /* CHECKOUT PANEL VIEW */
         .checkout-view {
             background: rgba(20, 20, 20, 0.95);
             border: 1px solid #df4a3b;
@@ -306,7 +298,6 @@
             color: #df4a3b;
         }
 
-        /* Sleek Tech Footer Banner */
         .footer-banner {
             background: linear-gradient(90deg, rgba(226, 99, 86, 0.2), rgba(184, 50, 39, 0.2));
             border: 1px solid rgba(226, 99, 86, 0.3);
@@ -329,3 +320,14 @@
         .contact-info {
             font-family: 'Share Tech Mono', monospace;
             font-size: 0.85rem;
+            color: #888888;
+            letter-spacing: 1px;
+        }
+
+        @keyframes pulseGlow {
+            0% { filter: drop-shadow(0px 0px 5px #df4a3b); opacity: 0.8; }
+            50% { filter: drop-shadow(0px 0px 20px #df4a3b); opacity: 1; }
+            100% { filter: drop-shadow(0px 0px 5px #df4a3b); opacity: 0.8; }
+        }
+    </style>
+</head>
