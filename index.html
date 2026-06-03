@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wound Care - Best Selling Product</title>
     <style>
-        /* Base Styles & Typography */
         @import url('https://googleapis.com');
         
         * {
@@ -32,30 +31,6 @@
             position: relative;
         }
 
-        /* Background shapes */
-        .circle-decor-1 {
-            position: fixed;
-            top: -30px;
-            left: -30px;
-            width: 150px;
-            height: 150px;
-            background-color: rgba(0, 0, 0, 0.1);
-            border-radius: 50%;
-            z-index: 0;
-        }
-
-        .circle-decor-2 {
-            position: fixed;
-            top: 120px;
-            left: 40px;
-            width: 70px;
-            height: 70px;
-            background-color: rgba(0, 0, 0, 0.12);
-            border-radius: 50%;
-            z-index: 0;
-        }
-
-        /* Layout Grid */
         .grid-layout {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -64,6 +39,11 @@
             position: relative;
             z-index: 1;
             margin-bottom: 40px;
+        }
+
+        /* View toggles */
+        .hidden-view {
+            display: none !important;
         }
 
         .left-column {
@@ -118,7 +98,6 @@
             font-weight: 400;
         }
 
-        /* Black CTA Button */
         .shop-now-btn {
             display: inline-block;
             background-color: #000000;
@@ -141,119 +120,35 @@
             transform: translateY(-2px);
         }
 
-        /* Footer Banner */
-        .footer-banner {
-            background-color: #e26356;
-            padding: 25px;
-            text-align: center;
-            color: #000000;
-            border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-            position: relative;
-            z-index: 1;
-        }
-
-        .footer-banner h2 {
-            margin: 0 0 10px 0;
-            font-size: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .contact-info {
-            font-size: 0.9rem;
-            font-weight: 700;
-            margin: 3px 0;
-        }
-
-        .website-link {
-            display: block;
-            font-size: 0.85rem;
-            margin-top: 8px;
-            color: #000000;
-            text-decoration: none;
-            font-weight: 400;
-        }
-        
-        .website-link:hover {
-            text-decoration: underline;
-        }
-
-        /* POP-UP MODAL WINDOW */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(5px);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 10;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.2s ease;
-        }
-
-        /* Active class rules when opened via JS */
-        .modal-overlay.open-modal {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .modal-content {
+        /* CHECKOUT FORM VIEW */
+        .checkout-view {
             background-color: #ffffff;
             color: #333333;
-            padding: 30px;
+            padding: 25px;
             border-radius: 12px;
-            width: 90%;
-            max-width: 400px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-            text-align: center;
-            position: relative;
-            transform: scale(0.8);
-            transition: transform 0.2s ease;
+            z-index: 2;
+            margin-bottom: 40px;
         }
 
-        .modal-overlay.open-modal .modal-content {
-            transform: scale(1);
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            font-size: 1.5rem;
-            background: none;
-            border: none;
-            color: #999999;
-            cursor: pointer;
-        }
-
-        .close-btn:hover {
-            color: #333333;
-        }
-
-        .modal-content h3 {
+        .checkout-view h3 {
             margin-top: 0;
             color: #b83227;
             font-size: 1.4rem;
+            text-align: center;
         }
 
         .order-summary {
             background-color: #f7f7f7;
-            padding: 15px;
+            padding: 12px;
             border-radius: 8px;
-            margin: 20px 0;
-            text-align: left;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
             border-left: 4px solid #b83227;
         }
 
         .form-group {
             margin-bottom: 15px;
-            text-align: left;
         }
 
         .form-group label {
@@ -282,21 +177,59 @@
             cursor: pointer;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-top: 10px;
         }
 
         .submit-order-btn:hover {
             background-color: #96251b;
         }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 12px;
+            font-size: 0.85rem;
+            color: #666666;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .back-link:hover {
+            color: #333333;
+            text-decoration: underline;
+        }
+
+        /* Footer Banner */
+        .footer-banner {
+            background-color: #e26356;
+            padding: 25px;
+            text-align: center;
+            color: #000000;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-banner h2 {
+            margin: 0 0 10px 0;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .contact-info {
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin: 3px 0;
+        }
     </style>
 </head>
 <body>
 
-    <div class="circle-decor-1"></div>
-    <div class="circle-decor-2"></div>
-
     <div class="page-wrapper">
-        <div class="grid-layout">
+        
+        <!-- MAIN DESIGN PANEL -->
+        <div class="grid-layout" id="mainView">
             <div class="left-column">
                 <h3 class="cursive-title">Best Selling</h3>
                 <h1 class="bold-title">Product</h1>
@@ -318,20 +251,9 @@
             </div>
         </div>
 
-        <div class="footer-banner">
-            <h2>Recovery Care</h2>
-            <div class="contact-info">TaSean Emory</div>
-            <div class="contact-info">+800-965-3248</div>
-            <a href="#" class="website-link">://bestseller.com</a>
-        </div>
-    </div>
-
-    <!-- POP-UP MODAL WINDOW MARKUP -->
-    <div class="modal-overlay" id="checkoutModal">
-        <div class="modal-content">
-            <button class="close-btn" id="closeModalBtn">&times;</button>
+        <!-- NEW IN-LINE CHECKOUT FORM PANEL -->
+        <div class="checkout-view hidden-view" id="checkoutView">
             <h3>Secure Checkout</h3>
-            
             <div class="order-summary">
                 <strong>Item:</strong> Wound Medicine Kit<br>
                 <strong>Total Price:</strong> $120.00
@@ -339,12 +261,66 @@
 
             <form id="checkoutForm">
                 <div class="form-group">
-                    <label for="buyerName">Buyer Name</label>
-                    <input type="text" id="buyerName" placeholder="Your Full Name" required>
+                    <label for="buyerName">Sponsor Name</label>
+                    <input type="text" id="buyerName" placeholder="Your Name" required>
                 </div>
                 <div class="form-group">
-                    <label for="districtSelect">Deliver to Region</label>
+                    <label for="districtSelect">Deliver to District</label>
                     <select id="districtSelect">
                         <option>District 1</option>
                         <option>District 2</option>
                         <option>District 4</option>
+                        <option>District 11</option>
+                        <option>District 12</option>
+                    </select>
+                </div>
+                <button type="submit" class="submit-order-btn">Submit Order</button>
+                <a class="back-link" id="backToProduct">← Cancel and Go Back</a>
+            </form>
+        </div>
+
+        <!-- Bottom Banner Section -->
+        <div class="footer-banner">
+            <h2>Recovery Care</h2>
+            <div class="contact-info">TaSean Emory</div>
+            <div class="contact-info">+800-965-3248</div>
+        </div>
+    </div>
+
+    <script>
+        // Simple View Switching Logic
+        const mainPanel = document.getElementById('mainView');
+        const checkoutPanel = document.getElementById('checkoutView');
+        
+        const shopBtn = document.getElementById('shopNowBtn');
+        const backLink = document.getElementById('backToProduct');
+        const orderForm = document.getElementById('checkoutForm');
+
+        // Click SHOP NOW -> Hide product layout, show checkout form
+        shopBtn.onclick = function() {
+            mainPanel.classList.add('hidden-view');
+            checkoutPanel.classList.remove('hidden-view');
+        };
+
+        // Click CANCEL -> Hide checkout form, show product layout
+        backLink.onclick = function() {
+            checkoutPanel.classList.add('hidden-view');
+            mainPanel.classList.remove('hidden-view');
+        };
+
+        // Form Submit
+        orderForm.onsubmit = function(event) {
+            event.preventDefault();
+            const name = document.getElementById('buyerName').value;
+            const location = document.getElementById('districtSelect').value;
+            
+            alert(`Thank you, ${name}! Your order has been placed. Delivery is heading out to ${location} shortly!`);
+            
+            checkoutPanel.classList.add('hidden-view');
+            mainPanel.classList.remove('hidden-view');
+            orderForm.reset();
+        };
+    </script>
+
+</body>
+</html>
