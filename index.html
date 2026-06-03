@@ -160,14 +160,16 @@
             filter: brightness(1.2);
         }
 
+        /* CHECKOUT FORM VIEW */
         .checkout-view {
-            background: rgba(20, 20, 20, 0.95);
+            background: linear-gradient(135deg, rgba(30, 30, 30, 0.95) 0%, rgba(15, 15, 15, 0.98) 100%);
             border: 1px solid #df4a3b;
             color: #ffffff;
             padding: 30px 25px;
             border-radius: 16px;
-            box-shadow: 0 0 30px rgba(223, 74, 59, 0.2);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
             margin-bottom: 20px;
+            text-align: center;
         }
 
         .checkout-view h3 {
@@ -230,6 +232,7 @@
             cursor: pointer;
             text-transform: uppercase;
             letter-spacing: 1px;
+            transition: background-color 0.2s;
         }
 
         .submit-order-btn:hover {
@@ -322,7 +325,5 @@
             <form id="checkoutForm">
                 <div class="form-group">
                     <label for="buyerName">Sponsor Identity</label>
-                    <input type="text" id="buyerName" placeholder="Enter Sponsor Name" required>
-                </div>
-                <div class="form-group">
-                    <label for="districtSelect">Target Coordinates</label>
+
+                    
