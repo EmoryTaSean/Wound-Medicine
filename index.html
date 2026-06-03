@@ -8,64 +8,69 @@
         /* Base Styles & Typography */
         @import url('https://googleapis.com');
         
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            background-color: #f7f7f7;
+            /* Changed background to stretch the deep red gradient across the entire screen */
+            background: linear-gradient(135deg, #df4a3b 0%, #b83227 100%);
             font-family: 'Montserrat', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            color: #ffffff;
+            overflow-x: hidden;
         }
 
-        /* Container matching the flyer layout */
-        .flyer-container {
+        /* Outer layout wrapper to control page positioning */
+        .page-wrapper {
             width: 100%;
             max-width: 600px;
-            background: linear-gradient(135deg, #df4a3b 0%, #b83227 100%);
-            color: #ffffff;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            padding: 20px;
             position: relative;
         }
 
-        /* Abstract circle decorations from the design */
+        /* Abstract circle decorations adapted for full screen */
         .circle-decor-1 {
-            position: absolute;
+            position: fixed;
             top: -30px;
             left: -30px;
-            width: 100px;
-            height: 100px;
-            background-color: rgba(0, 0, 0, 0.15);
+            width: 150px;
+            height: 150px;
+            background-color: rgba(0, 0, 0, 0.1);
             border-radius: 50%;
+            z-index: 0;
         }
 
         .circle-decor-2 {
-            position: absolute;
-            top: 40px;
-            left: 20px;
-            width: 50px;
-            height: 50px;
-            background-color: rgba(0, 0, 0, 0.2);
+            position: fixed;
+            top: 120px;
+            left: 40px;
+            width: 70px;
+            height: 70px;
+            background-color: rgba(0, 0, 0, 0.12);
             border-radius: 50%;
+            z-index: 0;
         }
 
         /* Main Content Grid */
         .grid-layout {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            padding: 40px 30px;
             gap: 25px;
             align-items: center;
+            position: relative;
+            z-index: 1;
+            margin-bottom: 40px;
         }
 
         /* Left Side Styles */
         .left-column {
             text-align: center;
-            z-index: 1;
         }
 
         .cursive-title {
@@ -103,10 +108,11 @@
         /* Right Side Styles (Sales Copy) */
         .right-column {
             text-align: center;
-            background-color: rgba(0, 0, 0, 0.05);
-            padding: 20px;
-            border-radius: 8px;
+            background-color: rgba(0, 0, 0, 0.15);
+            padding: 25px 20px;
+            border-radius: 12px;
             backdrop-filter: blur(5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         .pitch-text {
@@ -137,13 +143,16 @@
             transform: translateY(-2px);
         }
 
-        /* Footer Banner matching the bottom section */
+        /* Bottom Banner Section adjusted for full bleed */
         .footer-banner {
             background-color: #e26356;
-            padding: 20px;
+            padding: 25px;
             text-align: center;
             color: #000000;
-            border-top: 1px solid rgba(255,255,255,0.2);
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            position: relative;
+            z-index: 1;
         }
 
         .footer-banner h2 {
@@ -175,11 +184,11 @@
 </head>
 <body>
 
-    <div class="flyer-container">
-        <!-- Background Vector Elements -->
-        <div class="circle-decor-1"></div>
-        <div class="circle-decor-2"></div>
+    <!-- Background Vector Elements -->
+    <div class="circle-decor-1"></div>
+    <div class="circle-decor-2"></div>
 
+    <div class="page-wrapper">
         <!-- Main Layout Section -->
         <div class="grid-layout">
             
