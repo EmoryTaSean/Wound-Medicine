@@ -15,7 +15,6 @@
         body {
             margin: 0;
             padding: 0;
-            /* Changed background to stretch the deep red gradient across the entire screen */
             background: linear-gradient(135deg, #df4a3b 0%, #b83227 100%);
             font-family: 'Montserrat', sans-serif;
             display: flex;
@@ -26,7 +25,6 @@
             overflow-x: hidden;
         }
 
-        /* Outer layout wrapper to control page positioning */
         .page-wrapper {
             width: 100%;
             max-width: 600px;
@@ -34,7 +32,7 @@
             position: relative;
         }
 
-        /* Abstract circle decorations adapted for full screen */
+        /* Abstract circle decorations */
         .circle-decor-1 {
             position: fixed;
             top: -30px;
@@ -68,7 +66,6 @@
             margin-bottom: 40px;
         }
 
-        /* Left Side Styles */
         .left-column {
             text-align: center;
         }
@@ -105,7 +102,6 @@
             border: 2px solid rgba(255,255,255,0.1);
         }
 
-        /* Right Side Styles (Sales Copy) */
         .right-column {
             text-align: center;
             background-color: rgba(0, 0, 0, 0.15);
@@ -136,6 +132,8 @@
             letter-spacing: 1px;
             transition: transform 0.2s, background-color 0.2s;
             box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            cursor: pointer;
+            border: none;
         }
 
         .shop-now-btn:hover {
@@ -143,7 +141,7 @@
             transform: translateY(-2px);
         }
 
-        /* Bottom Banner Section adjusted for full bleed */
+        /* Bottom Banner Section */
         .footer-banner {
             background-color: #e26356;
             padding: 25px;
@@ -180,30 +178,132 @@
         .website-link:hover {
             text-decoration: underline;
         }
+
+        /* POP-UP MODAL STYLES */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            background-color: #ffffff;
+            color: #333333;
+            padding: 30px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            text-align: center;
+            position: relative;
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            color: #999999;
+            cursor: pointer;
+        }
+
+        .close-btn:hover {
+            color: #333333;
+        }
+
+        .modal-content h3 {
+            margin-top: 0;
+            color: #b83227;
+            font-size: 1.4rem;
+        }
+
+        .order-summary {
+            background-color: #f7f7f7;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: left;
+            border-left: 4px solid #b83227;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cccccc;
+            border-radius: 6px;
+            font-family: inherit;
+        }
+
+        .submit-order-btn {
+            width: 100%;
+            background-color: #b83227;
+            color: #ffffff;
+            border: none;
+            padding: 12px;
+            font-weight: 700;
+            border-radius: 6px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 10px;
+        }
+
+        .submit-order-btn:hover {
+            background-color: #96251b;
+        }
     </style>
 </head>
 <body>
 
-    <!-- Background Vector Elements -->
     <div class="circle-decor-1"></div>
     <div class="circle-decor-2"></div>
 
     <div class="page-wrapper">
-        <!-- Main Layout Section -->
         <div class="grid-layout">
-            
-            <!-- Left Side: Titles and Image Spot -->
             <div class="left-column">
                 <h3 class="cursive-title">Best Selling</h3>
                 <h1 class="bold-title">Product</h1>
-                
-                <!-- Placeholder where the image of the medicine goes -->
                 <div class="product-image-placeholder">
                     [ Product Image ]
                 </div>
             </div>
 
-            <!-- Right Side: Text Advertisement Copy -->
             <div class="right-column">
                 <p class="pitch-text">
                     Available now for $120.<br>
@@ -213,12 +313,11 @@
                 <p class="pitch-text">
                     Professional grade essentials designed to help you maintain your well-being. Trusted by professionals everywhere.
                 </p>
-                <a href="#" class="shop-now-btn">Shop Now</a>
+                <!-- Changed from <a> tag to a clickable button -->
+                <button class="shop-now-btn" id="shopBtn">Shop Now</button>
             </div>
-
         </div>
 
-        <!-- Bottom Banner Section -->
         <div class="footer-banner">
             <h2>Recovery Care</h2>
             <div class="contact-info">TaSean Emory</div>
@@ -227,5 +326,24 @@
         </div>
     </div>
 
-</body>
-</html>
+    <!-- POP-UP MODAL BOX -->
+    <div class="modal-overlay" id="orderModal">
+        <div class="modal-content">
+            <button class="close-btn" id="closeBtn">&times;</button>
+            <h3>Secure Checkout</h3>
+            
+            <div class="order-summary">
+                <strong>Item:</strong> Wound Medicine Kit<br>
+                <strong>Total Price:</strong> $120.00
+            </div>
+
+            <form id="checkoutForm">
+                <div class="form-group">
+                    <label for="sponsorName">Sponsor Name</label>
+                    <input type="text" id="sponsorName" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <label for="districtSelect">Deliver to District</label>
+                    <select id="districtSelect">
+                        <option>District 1 (Luxury)</option>
+                        <option>District 2 (Masonry)</option>
